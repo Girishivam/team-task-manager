@@ -20,8 +20,17 @@ router.post(
   "/",
   adminOnly,
   [
-    body("title").trim().notEmpty().isLength({ max: 200 }),
-    body("project").notEmpty(),
+    body("title")
+      .trim()
+      .notEmpty()
+      .isLength({ max: 200 }),
+
+    body("project")
+      .notEmpty(),
+
+    body("status")
+      .optional()
+      .isIn(["Todo", "In Progress", "Completed"]),
   ],
   validate,
   createTask

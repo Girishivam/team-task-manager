@@ -21,7 +21,7 @@ export default function ProjectDetail() {
     title: "",
     description: "",
     assignedTo: "",
-    status: "todo",
+    status: "Todo",
     dueDate: "",
   });
 
@@ -55,7 +55,7 @@ export default function ProjectDetail() {
 
   const openNewTask = () => {
     setEditingTask(null);
-    setTaskForm({ title: "", description: "", assignedTo: "", status: "todo", dueDate: "" });
+    setTaskForm({ title: "", description: "", assignedTo: "", status: "Todo", dueDate: "" });
     setTaskOpen(true);
   };
 
@@ -122,7 +122,7 @@ export default function ProjectDetail() {
             <ul className="divide-y">
               {tasks.map((t) => {
                 const overdue =
-                  t.dueDate && t.status !== "completed" && new Date(t.dueDate) < new Date();
+                  t.dueDate && t.status !== "Completed" && new Date(t.dueDate) < new Date();
                 const canUpdateStatus =
                   isAdmin || (t.assignedTo && t.assignedTo._id === user._id);
                 return (
@@ -144,9 +144,9 @@ export default function ProjectDetail() {
                         onChange={(e) => updateStatus(t, e.target.value)}
                         className="text-xs border rounded-lg px-2 py-1"
                       >
-                        <option value="todo">Todo</option>
-                        <option value="in_progress">In Progress</option>
-                        <option value="completed">Completed</option>
+                        <option value="Todo">Todo</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Completed">Completed</option>
                       </select>
                     ) : (
                       <StatusBadge status={t.status} />
@@ -253,9 +253,9 @@ export default function ProjectDetail() {
               value={taskForm.status}
               onChange={(e) => setTaskForm({ ...taskForm, status: e.target.value })}
             >
-              <option value="todo">Todo</option>
-              <option value="in_progress">In Progress</option>
-              <option value="completed">Completed</option>
+              <option value="Todo">Todo</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Completed">Completed</option>
             </select>
             <input
               type="date"

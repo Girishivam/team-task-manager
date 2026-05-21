@@ -17,7 +17,7 @@ exports.createTask = async (req, res) => {
     description,
     project,
     assignedTo: assignedTo || null,
-    status: status || "todo",
+    status: status || "Todo",
     dueDate: dueDate || null,
     createdBy: req.user._id,
   });
